@@ -68,7 +68,7 @@ new Promise(resolve => ymaps.ready(resolve))
 			searchControlProvider: 'yandex#search'
 		});
 		clusterer = new ymaps.Clusterer({
-			preset: 'islands#invertedVioletClusterIcons',
+			preset: 'islands#invertedBlueClusterIcons',
 			clusterDisableClickZoom: true,
 			openBalloonOnClick: false
 		}); // настраиваем кластеризацию меток
@@ -104,7 +104,7 @@ new Promise(resolve => ymaps.ready(resolve))
 	// Для каждого элемента массива (а это координаты) ставим метку на катру
 	.then(coords => {
 		const placemarks = coords.map(coord => {
-			return new ymaps.Placemark(coord, {}, { preset: 'islands#blueHomeCircleIcon' })
+			return new ymaps.Placemark(coord, {}, { preset: 'islands#bluePersonCircleIcon'})
 		});
 		clusterer.add(placemarks);
 	})
