@@ -104,8 +104,20 @@ new Promise(resolve => ymaps.ready(resolve))
 	// Для каждого элемента массива (а это координаты) ставим метку на катру
 	.then(coords => {
 		const placemarks = coords.map(coord => {
-			return new ymaps.Placemark(coord, {}, { preset: 'islands#bluePersonCircleIcon'})
+			return new ymaps.Placemark(coord, {
+
+				balloonContentHeader: 'Имя Фамилия',
+
+				balloonContentBody: 'цвет <strong>влюбленной жабы</strong>',
+
+				balloonContentFooter: 'Город'
+				},
+
+				{},
+
+				{ preset: 'islands#bluePersonCircleIcon' })
 		});
+
 		clusterer.add(placemarks);
 	})
 
