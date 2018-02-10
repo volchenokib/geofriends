@@ -110,14 +110,23 @@ new Promise(resolve => ymaps.ready(resolve))
 
 		// transformation filtered friends list & add list of coordinates
 		.map(friend => {
+
+			let onlineStaus = '';
+
+			if (friend.online  === 1) {
+				onlineStaus = 'online';
+			}
+			else {
+				onlineStaus = 'offline';
+			}
+
 			return {
 				place: coords.shift(),
 				name: friend.first_name + ' ' + friend.last_name,
 				photo: friend.photo_100,
-				status: friend.online
+				status: onlineStaus
 			};
 		});
-
 
 	// set placemarks on the map
 		for (let i = 0, l = resultList.length; i < l; i++) {
@@ -126,14 +135,10 @@ new Promise(resolve => ymaps.ready(resolve))
 				point.place, {
 					balloonContentHeader: point.name,
 					// balloonContentBody: point.photo,
-					// balloonContentFooter: point.status
-
+					balloonContentFooter: point.status
 				}
-
 			));
-
 		}
-
 	})
 
 	// catch errors
