@@ -68,13 +68,14 @@ new Promise(resolve => ymaps.ready(resolve))
 
 		myMap = new ymaps.Map('map', {
 			center: [55.76, 37.64], // Moscow
-			zoom: 5
+			zoom: 5,
+			controls: ['zoomControl', 'searchControl', 'fullscreenControl']
 		}, {
 			searchControlProvider: 'yandex#search'
 		});
 
 		clusterer = new ymaps.Clusterer({
-			preset: 'islands#invertedBlueClusterIcons',
+			preset: 'islands#blueClusterIcons',
 			clusterDisableClickZoom: true,
 			openBalloonOnClick: true
 		});
@@ -135,9 +136,11 @@ new Promise(resolve => ymaps.ready(resolve))
 				point.place, {
 					balloonContentHeader: point.name,
 					// balloonContentBody: point.photo,
-					balloonContentFooter: point.status
-				}
-			));
+					balloonContentFooter: point.status,
+					iconContent: '1'
+				},
+
+			{ preset: 'islands#blueCircleIcon' }));
 		}
 	})
 
