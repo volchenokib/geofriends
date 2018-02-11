@@ -1,3 +1,5 @@
+require('babel-polyfill');
+
 // Sending a request to the  VK server
 function vkApi(method, options) {
 	if (!options.v) {
@@ -69,7 +71,7 @@ new Promise(resolve => ymaps.ready(resolve))
 		myMap = new ymaps.Map('map', {
 			center: [55.76, 37.64], // Moscow
 			zoom: 5,
-			controls: ['zoomControl', 'searchControl', 'fullscreenControl']
+			controls: ['zoomControl', 'searchControl']
 		}, {
 			searchControlProvider: 'yandex#search'
 		});
@@ -77,7 +79,9 @@ new Promise(resolve => ymaps.ready(resolve))
 		clusterer = new ymaps.Clusterer({
 			preset: 'islands#blueClusterIcons',
 			clusterDisableClickZoom: true,
-			openBalloonOnClick: true
+			openBalloonOnClick: true,
+			clusterBalloonContentLayoutWidth: 300,
+			clusterBalloonLeftColumnWidth: 180
 		});
 
 		myMap.geoObjects.add(clusterer);
@@ -134,8 +138,8 @@ new Promise(resolve => ymaps.ready(resolve))
 			let point = resultList[i];
 			clusterer.add(new ymaps.Placemark(
 				point.place, {
-					balloonContentHeader: point.name,
-					// balloonContentBody: point.photo,
+					balloonContentHeader: '<div style= "text-align: center;"> ' + point.name + '</div>',
+					balloonContentBody: '<img style= "display: block; margin: 0 auto;" src=' + point.photo +'>',
 					balloonContentFooter: point.status,
 					iconContent: '1'
 				},

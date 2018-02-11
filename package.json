@@ -1,0 +1,30 @@
+{
+  "name": "geofriends",
+  "version": "1.0.0",
+  "description": "app for Vk",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volchenokib/geofriends.git"
+  },
+  "author": "Igor Volchenok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/volchenokib/geofriends/issues"
+  },
+  "homepage": "https://github.com/volchenokib/geofriends#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "uglifyjs-webpack-plugin": "^1.1.8",
+    "webpack": "^3.11.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}
